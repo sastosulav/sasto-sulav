@@ -58,7 +58,6 @@ export const Image = (props: Props) => {
   const handleLoad = useCallback(
     (e: React.SyntheticEvent<HTMLImageElement>) => {
       setStatus("loaded");
-      console.log("loaded");
       props.onLoad?.(e);
     },
     [props.onLoad]
