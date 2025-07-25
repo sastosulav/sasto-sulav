@@ -51,6 +51,7 @@ function Carousel({
   children,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+  const [isMounted, setIsMounted] = React.useState(false);
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -60,6 +61,10 @@ function Carousel({
   );
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const onSelect = React.useCallback((api: CarouselApi) => {
     if (!api) return;
@@ -103,6 +108,8 @@ function Carousel({
       api?.off("select", onSelect);
     };
   }, [api, onSelect]);
+
+  if (!isMounted) return null;
 
   return (
     <CarouselContext.Provider
