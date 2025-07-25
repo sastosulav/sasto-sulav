@@ -77,7 +77,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <BottomNav />
         <Toaster position="top-center" />
         <ScrollUP />
-        <TanStackRouterDevtools position="bottom-right" />
+        {process.env.NODE_ENV === "development" && (
+          <TanStackRouterDevtools position="bottom-right" />
+        )}
         <Scripts />
       </body>
     </html>

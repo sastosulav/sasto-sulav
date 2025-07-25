@@ -1,7 +1,6 @@
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { cn } from "@/lib/utils";
 import { ImageOff } from "lucide-react";
-import { useCallback, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ColorCombination,
   defaultColorCombinations,
@@ -21,20 +20,16 @@ const ImageWrapper = ({ children, className, style }: ImageWrapperProps) => {
 };
 
 export const Image = (props: Props) => {
-  const { ref: imgRef, isIntersecting } = useIntersectionObserver({
-    freezeOnceVisible: true,
-    rootMargin: "50px",
-  });
   const defaultSrc = "/favicon-32x32.png";
   const [status, setStatus] = useState<"loading" | "loaded" | "error">(
     "loading"
   );
+  const imgRef = useRef<HTMLImageElement>(null);
 
   const patternData = useMemo(() => {
     const seedValue = hashString(props.src || "default");
     const colorIndex = seedValue % defaultColorCombinations.length;
     const selectedColors = defaultColorCombinations[colorIndex];
-
     const randomSeed = seedValue % 1000;
     const uniqueId = `${hashString(props.src || "default")}-${seedValue}`.slice(
       0,
@@ -48,6 +43,15 @@ export const Image = (props: Props) => {
     };
   }, [props.src]);
 
+  useEffect(() => {
+    setStatus("loading");
+
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) {
+      setStatus("loaded");
+    }
+  }, [props.src]);
+
   if (!props.src) {
     console.warn("Image: src prop is required");
   }
@@ -55,26 +59,10 @@ export const Image = (props: Props) => {
     console.warn("Image: alt prop is required for accessibility");
   }
 
-  const handleLoad = useCallback(
-    (e: React.SyntheticEvent<HTMLImageElement>) => {
-      setStatus("loaded");
-      props.onLoad?.(e);
-    },
-    [props.onLoad]
-  );
-
-  const handleError = useCallback(
-    (event: React.SyntheticEvent<HTMLImageElement>) => {
-      setStatus("error");
-      props.onError?.(event);
-    },
-    [props.onError]
-  );
-
   if (!props.src || status === "error") {
     return (
       <ImageWrapper
-        className={cn("h-full text-sm w-full", props.className)}
+        className={cn("h-full text-sm w-full @container", props.className)}
         style={props.style}
       >
         <div
@@ -83,8 +71,15 @@ export const Image = (props: Props) => {
             props.className
           )}
         >
-          <ImageOff className="h-20 w-20 mb-2" />
-          <span className="text-center">Error Loading Image</span>
+          <ImageOff className="size-20 @max-[300px]:size-10 mb-2 text-gray-600" />
+          <span className="text-center @max-[300px]:text-xs text-muted-foreground">
+            Error Loading Image
+          </span>
+          <img
+            src={props?.src || ""}
+            alt={props?.alt || ""}
+            className="sr-only"
+          />
         </div>
       </ImageWrapper>
     );
@@ -92,7 +87,6 @@ export const Image = (props: Props) => {
 
   return (
     <ImageWrapper
-      ref={imgRef}
       style={props.style}
       className={cn("h-full relative overflow-hidden w-full", props.className)}
     >
@@ -109,24 +103,25 @@ export const Image = (props: Props) => {
           />
         </div>
       )}
-      {isIntersecting && (
-        <img
-          {...props}
-          src={props.src || defaultSrc}
-          onLoad={(e) => {
-            handleLoad(e);
-          }}
-          onError={(e) => {
-            handleError(e);
-          }}
-          className={cn(
-            "h-full w-full object-cover transition-opacity duration-500 ease-in-out",
-            status === "loading" ? "opacity-0" : "opacity-100",
-            status === "loaded" ? "animate-blur-in" : "",
-            props.className
-          )}
-        />
-      )}
+      <img
+        {...props}
+        ref={imgRef}
+        onLoad={(e) => {
+          setStatus("loaded");
+          props.onLoad?.(e);
+        }}
+        src={props.src || defaultSrc}
+        onError={(e) => {
+          setStatus("error");
+          props.onError?.(e);
+        }}
+        className={cn(
+          "size-full object-cover transition-opacity duration-500 ease-in-out",
+          status === "loading" ? "opacity-0" : "opacity-100",
+          status === "loaded" ? "animate-blur-in" : "",
+          props.className
+        )}
+      />
     </ImageWrapper>
   );
 };

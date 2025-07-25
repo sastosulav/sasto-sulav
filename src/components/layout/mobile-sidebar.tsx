@@ -1,4 +1,5 @@
 import { NAV_LINKS } from "@/constants/data";
+import { Link } from "@tanstack/react-router";
 import { ChevronDown, ShoppingBag } from "lucide-react";
 import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
@@ -20,13 +21,14 @@ export const MobileSidebar = (
     <Sheet>
       <SheetTrigger {...props} />
       <SheetContent side="left" className="flex flex-col p-0 pb-20">
-        <SheetHeader className="p-6 pb-4 flex-row items-center gap-3">
-          <ShoppingBag className="text-tertiary size-8" />
-          <SheetTitle className="font-bold font-dosis text-tertiary text-2xl">
-            Sasto Sulav
-          </SheetTitle>
-        </SheetHeader>
-        {/* ScrollArea wraps the content that needs to be scrollable */}
+        <Link to="/">
+          <SheetHeader className="p-6 pb-4 flex-row items-center gap-3">
+            <ShoppingBag className="text-tertiary size-8" />
+            <SheetTitle className="font-bold font-dosis text-tertiary text-2xl">
+              Sasto Sulav
+            </SheetTitle>
+          </SheetHeader>
+        </Link>
         <ScrollArea className="flex-1 h-full">
           <div className="px-8 mb-4">
             <LocationSelector className="w-full justify-between rounded-sm px-6 py-3" />

@@ -1,4 +1,5 @@
 import { MoveRight } from "lucide-react";
+import { motion } from "motion/react";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -7,7 +8,11 @@ import { Image } from "../ui/image";
 export const HomeBanner = () => {
   return (
     <div className="grid md:grid-cols-2 items-center gap-6">
-      <section>
+      <motion.section
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <AspectRatio
           ratio={4 / 3}
           className="rounded-[10px] overflow-hidden relative"
@@ -29,8 +34,8 @@ export const HomeBanner = () => {
               </section>
               <section>
                 <h3 className=" font-semibold lg:text-[40px] text-2xl lg:leading-[48px]">
-                  Gerthesim Tend <br />
-                  Inder Prosur
+                  Fresh Organic <br />
+                  Vegetables
                 </h3>
                 <p className="text-zinc-700 sm:text-base text-sm">
                   Only this week. Don&apos;t miss...
@@ -51,14 +56,16 @@ export const HomeBanner = () => {
           </a>
           <Image
             alt="banner1"
-            className="object-cover size-full"
-            src={
-              "https://klbtheme.com/bacola/wp-content/plugins/bacola-core/elementor/images/banner-box4.png"
-            }
+            className="object-cover"
+            src="https://images.unsplash.com/photo-1586788224331-947f68671cf1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
         </AspectRatio>
-      </section>
-      <section>
+      </motion.section>
+      <motion.section
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <AspectRatio
           ratio={4 / 3}
           className="rounded-[10px] overflow-hidden relative"
@@ -80,8 +87,8 @@ export const HomeBanner = () => {
               </section>
               <section>
                 <h3 className="text-white font-semibold lg:text-[40px] text-2xl lg:leading-[48px]">
-                  Gerthesim Tend <br />
-                  Inder Prosur
+                  Premium Quality <br />
+                  Groceries
                 </h3>
                 <p className="text-gray-200 sm:text-base text-sm">
                   Just don&apos;t miss the special this week...
@@ -103,12 +110,10 @@ export const HomeBanner = () => {
           <Image
             alt="banner2"
             className="object-cover"
-            src={
-              "https://klbtheme.com/bacola/wp-content/uploads/2021/08/home-banner-18.jpg"
-            }
+            src="https://klbtheme.com/bacola/wp-content/uploads/2021/08/home-banner-18.jpg"
           />
         </AspectRatio>
-      </section>
+      </motion.section>
     </div>
   );
 };

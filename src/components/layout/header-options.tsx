@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Menu, Search, ShoppingBag, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AutoComplete } from "../ui/auto-complete";
@@ -40,7 +41,7 @@ export const HeaderOptions = () => {
             </Button>
           </MobileSidebar>
         </div>
-        <div>
+        <Link to="/">
           <div className="flex items-center gap-2">
             <ShoppingBag className="size-14 text-tertiary lg:block hidden" />
             <h3 className="text-3xl font-bold font-dosis text-tertiary">
@@ -50,7 +51,7 @@ export const HeaderOptions = () => {
           <small className="text-xs text-gray-400 text-center sm:block hidden">
             Online Grocery Shopping Center
           </small>
-        </div>
+        </Link>
       </section>
       <section className="md:flex-1 flex items-center gap-6">
         <div className="hidden xl:block">
@@ -58,6 +59,7 @@ export const HeaderOptions = () => {
         </div>
         <div className="md:flex hidden bg-muted rounded-sm items-center px-3 flex-1">
           <AutoComplete
+            isLoading={isLoading}
             className="[&_svg]:hidden rounded-sm border-none bg-muted py-7 [&>div]:px-0"
             options={options?.map((post) => ({
               value: post.id.toString(),
