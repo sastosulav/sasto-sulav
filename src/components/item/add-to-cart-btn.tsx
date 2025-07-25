@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { Button, ButtonProps } from "../ui/button";
+import { SlidingNumber } from "../ui/sliding-number";
 
 export const AddToCartButton = ({
   className,
@@ -22,7 +23,7 @@ export const AddToCartButton = ({
         >
           <Minus />
         </Button>
-        <p className="text-sm">{count}</p>
+        <SlidingNumber className="text-sm" value={count} />
         <Button
           onClick={() => {
             setCount((prev) => prev + 1);
