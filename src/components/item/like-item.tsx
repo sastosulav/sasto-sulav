@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import { Button, ButtonProps } from "../ui/button";
 import { ViewWishListDialog } from "../view-wishlist-dialog";
 
-export const LikeItem = (props: ButtonProps) => {
+interface Props extends ButtonProps {
+  itemName: string;
+}
+
+export const LikeItem = ({ itemName, ...props }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [opened, setOpened] = useState(false);
 
@@ -31,7 +35,11 @@ export const LikeItem = (props: ButtonProps) => {
       >
         <Heart className={cn(isLiked && "fill-red-500 stroke-red-500")} />
       </Button>
-      <ViewWishListDialog opened={opened} setOpened={setOpened} />
+      <ViewWishListDialog
+        itemName={itemName}
+        opened={opened}
+        setOpened={setOpened}
+      />
     </div>
   );
 };

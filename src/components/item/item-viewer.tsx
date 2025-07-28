@@ -2,6 +2,7 @@ import { ArrowUpDown, Check, Heart, Minus, Plus } from "lucide-react";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { Button } from "../ui/button";
 
+import { ITEMS } from "@/types/items";
 import { Badge } from "../ui/badge";
 import {
   Dialog,
@@ -15,9 +16,14 @@ import { Rating, RatingButton } from "../ui/rating";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 
-type Props = React.ComponentProps<typeof DialogTrigger>;
+type Props = {
+  className?: string;
+  children: React.ReactNode;
+  asChild?: boolean;
+  item: ITEMS;
+};
 
-export const ItemViewer = (props: Props) => {
+export const ItemViewer = ({ item, ...props }: Props) => {
   return (
     <Dialog>
       <DialogTrigger {...props} />
@@ -29,7 +35,7 @@ export const ItemViewer = (props: Props) => {
           <div className="md:p-16 p-8 grid gap-4">
             <DialogHeader className="space-y-3 border-b pb-6">
               <DialogTitle className="text-2xl font-semibold text-left">
-                Angie’s Boomchickapop Sweet & Salty Kettle Corn
+                {item.name}
               </DialogTitle>
               <div className="flex items-center md:flex-nowrap flex-wrap gap-3 text-xs font-medium text-gray-800">
                 <p>
@@ -41,7 +47,7 @@ export const ItemViewer = (props: Props) => {
                   grams, 500 Grams, 1 KG
                 </p>
                 <div className="flex items-center md:gap-1 gap-2 md:border-x px-3">
-                  <Rating defaultValue={4}>
+                  <Rating defaultValue={item.ratings}>
                     {Array.from({ length: 5 }).map((_, index) => (
                       <RatingButton
                         className="[&_svg]:size-3 w-3"
@@ -49,7 +55,9 @@ export const ItemViewer = (props: Props) => {
                       />
                     ))}
                   </Rating>
-                  <p className="font-dosis font-semibold uppercase">1 Review</p>
+                  <p className="font-dosis font-semibold uppercase">
+                    {item.ratingCount} Review
+                  </p>
                 </div>
                 <p>
                   <span className="text-muted-foreground">SKU:</span> BE4CURT
@@ -57,18 +65,16 @@ export const ItemViewer = (props: Props) => {
               </div>
             </DialogHeader>
 
-            <div className="lg:grid-cols-2 grid-cols-1 grid items-center py-3 gap-6">
-              <div className="flex flex-col items-center">
+            <div className="lg:grid-cols-2 grid-cols-1 grid items-start py-3 gap-6">
+              <div className="flex flex-col items-center gap-y-3 lg:pt-20">
                 <AspectRatio ratio={4 / 3}>
                   <Image
-                    src={
-                      "https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60.jpg"
-                    }
-                    alt="item"
-                    className="object-cover"
+                    src={item.image}
+                    alt={item.name}
+                    className="object-contain"
                   />
                 </AspectRatio>
-                <section className="grid grid-cols-3 items-center gap-3 justify-center">
+                {/* <section className="grid grid-cols-3 items-center gap-3 justify-center">
                   <Button
                     className="relative px-1 py-2 size-14 overflow-hidden rounded-xs"
                     variant="outline"
@@ -105,12 +111,12 @@ export const ItemViewer = (props: Props) => {
                       className="object-cover"
                     />
                   </Button>
-                </section>
+                </section> */}
               </div>
               <div className="space-y-6">
                 <section className="space-y-2">
                   <p className="text-destructive font-semibold text-[26px] font-dosis">
-                    $7.99
+                    {item.price}
                   </p>
                   <Badge className="font-dosis font-semibold text-xs bg-green-100 text-green-500 rounded-full">
                     IN STOCK

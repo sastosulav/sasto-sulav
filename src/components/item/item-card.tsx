@@ -25,7 +25,7 @@ export const ItemCard = ({ className, item }: Props) => {
       )}
     >
       <div className="absolute flex flex-col gap-y-1 top-2 right-2 text-muted-foreground z-20">
-        <ItemViewer asChild>
+        <ItemViewer asChild item={item}>
           <Button
             className="rounded-full hover:bg-tertiary hover:text-white cursor-pointer lg:translate-x-4 group-hover:translate-x-0 transition-all lg:ease-linear lg:opacity-0 group-hover:opacity-100"
             variant="outline"
@@ -34,7 +34,7 @@ export const ItemCard = ({ className, item }: Props) => {
             <Expand />
           </Button>
         </ItemViewer>
-        <LikeItem />
+        <LikeItem itemName={item.name} />
       </div>
       <CardHeader className="p-0 relative">
         <div className="top-2 left-2 z-20 absolute flex flex-col gap-y-1">

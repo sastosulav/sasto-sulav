@@ -487,17 +487,17 @@ export const BOTTOM_NAVLINKS: {
   {
     label: "Store",
     href: "/",
-    icon: <Store className="text-muted-foreground" />,
+    icon: <Store />,
   },
   {
     label: "Search",
     href: "/search",
-    icon: <Search className="text-muted-foreground" />,
+    icon: <Search />,
   },
   {
     label: "Account",
     href: "/profile",
-    icon: <UserRound className="text-muted-foreground" />,
+    icon: <UserRound />,
   },
 ];
 

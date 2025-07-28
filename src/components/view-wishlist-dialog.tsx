@@ -13,6 +13,7 @@ import {
 type Props = {
   opened: boolean;
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  itemName: string;
 };
 
 export const ViewWishListDialog = (props: Props) => {
@@ -23,10 +24,8 @@ export const ViewWishListDialog = (props: Props) => {
           <DialogTitle>View WishList</DialogTitle>
         </DialogHeader>
         <p className="text-sm">
-          <span className="font-bold">
-            Nestle Original Coffee-Mate Coffee Creamer
-          </span>{" "}
-          has been added to Wishlist.
+          <span className="font-bold">{props.itemName}</span> has been added to
+          Wishlist.
         </p>
         <section className="flex flex-col items-center gap-y-3">
           <Button className="w-full rounded-none" variant="tertiary" size="lg">

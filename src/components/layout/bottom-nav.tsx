@@ -10,18 +10,20 @@ export const BottomNav = () => {
         <Link
           to={l.href}
           key={index}
-          className="flex flex-col items-center gap-0.5"
+          className="flex flex-col items-center gap-0.5 text-muted-foreground"
+          activeProps={{ className: "text-primary" }}
         >
           {l.icon}
-          <p className="text-muted-foreground text-xs font-medium">{l.label}</p>
+          <p className="text-xs font-medium">{l.label}</p>
         </Link>
       ))}
-      <MobileSidebar asChild>
-        <button className="flex flex-col items-center gap-0.5">
-          <Menu className="text-muted-foreground" />
-          <p className="text-muted-foreground text-xs font-medium">
-            Categroies
-          </p>
+      <MobileSidebar
+        asChild
+        className="text-muted-foreground data-[state=open]:text-primary"
+      >
+        <button className="flex flex-col items-center gap-0.5 ">
+          <Menu />
+          <p className="text-xs font-medium">Categroies</p>
         </button>
       </MobileSidebar>
     </div>

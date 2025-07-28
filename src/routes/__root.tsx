@@ -11,7 +11,6 @@ import { Toaster } from "@/components/ui/sonner";
 import appCss from "@/styles/app.css?url";
 import { seo } from "@/utils/seo";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
 
 export const Route = createRootRoute({
@@ -77,9 +76,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <BottomNav />
         <Toaster position="top-center" />
         <ScrollUP />
-        {process.env.NODE_ENV === "development" && (
+        {/* {process.env.NODE_ENV === "development" && (
           <TanStackRouterDevtools position="bottom-right" />
-        )}
+        )} */}
         <Scripts />
       </body>
     </html>
