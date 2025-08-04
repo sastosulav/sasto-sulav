@@ -1,20 +1,20 @@
-import { Container } from "../ui/container";
-import { FooterContacts } from "./footer-contacts";
-import { FooterCopyright } from "./footer-copyright";
-import { FooterDeliveryFeatures } from "./footer-delivery-features";
-import { FooterLinks } from "./footer-links";
+import { Link } from "@tanstack/react-router";
 
 export const Footer = () => {
   return (
-    <footer className="md:pb-0 pb-16">
-      <div className="bg-gray-50 lg:pb-28 pb-20 lg:space-y-28 space-y-10">
-        <FooterDeliveryFeatures />
-        <FooterLinks />
+    <footer className="bg-muted py-4 text-center -space-y-5">
+      <p>
+        ©{new Date().getFullYear()} Sasto Sulav Express. All rights reserved.
+      </p>
+      <br />
+      <div className="flex divide-x-2 items-center justify-center">
+        <Link to="/privacy-policy" className="text-tertiary px-3">
+          Privacy Policy
+        </Link>
+        <Link to="/terms-condition" className="text-tertiary px-3">
+          Terms and Conditions
+        </Link>
       </div>
-      <Container>
-        <FooterContacts />
-        <FooterCopyright />
-      </Container>
     </footer>
   );
 };

@@ -1,7 +1,7 @@
-"use client";
+import { cn } from "@/lib/utils";
 
+import { useLanguage } from "@/providers/hook";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,27 +9,42 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-export const LanguageSelector = () => {
-  const [language, setLanguage] = useState("en");
+export const LanguageSelector = ({ className }: { className?: string }) => {
+  const { language, setLanguage } = useLanguage();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="text-xs text-gray-700 font-medium  flex items-center hover:text-primary cursor-default gap-0.5">
+      <DropdownMenuTrigger
+        className={cn(
+          "text-xs text-gray-700 font-medium  flex items-center hover:text-primary cursor-default gap-0.5",
+          className
+        )}
+      >
         {language === "en" ? "English" : "日本語"}
         <ChevronDown className="size-3 group-hover:text-primary" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="flex flex-col shadow bg-background min-w-fit rounded-none p-0 py-3">
-        <DropdownMenuItem asChild className="rounded-none">
+      <DropdownMenuContent className="flex flex-col shadow bg-background min-w-fit">
+        <DropdownMenuItem asChild>
           <button
-            onClick={() => setLanguage("en")}
-            className="py-2 px-3 text-xs text-muted-foreground font-medium"
+            onClick={() => {
+              setLanguage("en");
+            }}
+            className={cn(
+              "py-2 px-3 text-xs text-muted-foreground font-medium",
+              language === "en" && "bg-secondary text-tertiary"
+            )}
           >
             English
           </button>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild className="rounded-none">
+        <DropdownMenuItem asChild>
           <button
-            onClick={() => setLanguage("ja")}
-            className="py-2 px-3 text-xs text-muted-foreground font-medium"
+            onClick={() => {
+              setLanguage("jp");
+            }}
+            className={cn(
+              "py-2 px-3 text-xs text-muted-foreground font-medium",
+              language === "jp" && "bg-secondary text-tertiary"
+            )}
           >
             日本語
           </button>

@@ -558,3 +558,24 @@ export const ALCOHOL_CATEGORIES: { label: string; href: string }[] = [
     href: "https://tetoteto.co.jp/item/spiced-khukuri-rum-a8374280orm",
   },
 ];
+
+export const LANGUAGE__COOKIE_KEY = "lang";
+
+export const HOME_DATA = [
+  {
+    image:
+      "https://plus.unsplash.com/premium_photo-1664551734602-49640bd82eba?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Sasto Sulav Express",
+    description:
+      "Your premier destination for authentic South Asian groceries in Japan. We bring the flavors of Nepal and South Asia directly to your doorstep, offering a wide selection of spices, lentils, rice, and traditional ingredients. Our express delivery service ensures fresh and quality products reach you quickly.",
+    href: "/shop",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1504598318550-17eba1008a68?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Nepali Dining",
+    description:
+      "Experience the authentic taste of Nepal in the heart of Japan. Our restaurant serves traditional Nepali cuisine prepared by expert chefs, offering a perfect blend of flavors and spices. From classNameic momos to rich curries, we bring the warmth and hospitality of Nepal to your dining experience.",
+    href: "/nepali-dining",
+  },
+];

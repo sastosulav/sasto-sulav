@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export function NotFound({ children }: { children?: any }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60dvh] bg-background text-foreground px-4 text-center">
+    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-background text-foreground px-4 text-center">
       <div className="space-y-4">
         <h1 className="text-6xl font-extrabold tracking-tight sm:text-8xl lg:text-9xl">
           404

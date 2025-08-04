@@ -1,17 +1,13 @@
 /// <reference types="vite/client" />
 import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary";
-import { BottomNav } from "@/components/layout/bottom-nav";
-import { CallToAction } from "@/components/layout/call-to-action";
-import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
-import { ScrollUP } from "@/components/layout/scroll-up";
 import { NotFound } from "@/components/NotFound";
-import { Container } from "@/components/ui/container";
 import { Toaster } from "@/components/ui/sonner";
+import { LanguageProvider } from "@/providers";
 import appCss from "@/styles/app.css?url";
 import { seo } from "@/utils/seo";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import * as React from "react";
+import { CookiesProvider } from "react-cookie";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -69,13 +65,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        <Container>{children}</Container>
-        <CallToAction />
-        <Footer />
-        <BottomNav />
+        <CookiesProvider
+          defaultSetOptions={{
+            path: "/",
+          }}
+        >
+          <LanguageProvider>{children}</LanguageProvider>
+        </CookiesProvider>
         <Toaster position="top-center" />
-        <ScrollUP />
         {/* {process.env.NODE_ENV === "development" && (
           <TanStackRouterDevtools position="bottom-right" />
         )} */}

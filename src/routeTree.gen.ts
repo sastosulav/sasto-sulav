@@ -9,10 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as MainRouteImport } from './routes/_main'
+import { Route as NepaliDiningRouteRouteImport } from './routes/nepali-dining/route'
+import { Route as NepaliDiningIndexRouteImport } from './routes/nepali-dining/index'
+import { Route as MainIndexRouteImport } from './routes/_main/index'
+import { Route as NepaliDiningTakeoutRouteImport } from './routes/nepali-dining/takeout'
+import { Route as NepaliDiningReservationRouteImport } from './routes/nepali-dining/reservation'
+import { Route as NepaliDiningMenuRouteImport } from './routes/nepali-dining/menu'
+import { Route as NepaliDiningDeliveryRouteImport } from './routes/nepali-dining/delivery'
+import { Route as MainTermsConditionRouteImport } from './routes/_main/terms-condition'
+import { Route as MainPrivacyPolicyRouteImport } from './routes/_main/privacy-policy'
+import { Route as MainAboutRouteImport } from './routes/_main/about'
 
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
@@ -23,44 +39,172 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const MainRoute = MainRouteImport.update({
+  id: '/_main',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NepaliDiningRouteRoute = NepaliDiningRouteRouteImport.update({
+  id: '/nepali-dining',
+  path: '/nepali-dining',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NepaliDiningIndexRoute = NepaliDiningIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => NepaliDiningRouteRoute,
+} as any)
+const MainIndexRoute = MainIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MainRoute,
+} as any)
+const NepaliDiningTakeoutRoute = NepaliDiningTakeoutRouteImport.update({
+  id: '/takeout',
+  path: '/takeout',
+  getParentRoute: () => NepaliDiningRouteRoute,
+} as any)
+const NepaliDiningReservationRoute = NepaliDiningReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
+  getParentRoute: () => NepaliDiningRouteRoute,
+} as any)
+const NepaliDiningMenuRoute = NepaliDiningMenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => NepaliDiningRouteRoute,
+} as any)
+const NepaliDiningDeliveryRoute = NepaliDiningDeliveryRouteImport.update({
+  id: '/delivery',
+  path: '/delivery',
+  getParentRoute: () => NepaliDiningRouteRoute,
+} as any)
+const MainTermsConditionRoute = MainTermsConditionRouteImport.update({
+  id: '/terms-condition',
+  path: '/terms-condition',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainPrivacyPolicyRoute = MainPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainAboutRoute = MainAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => MainRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/nepali-dining': typeof NepaliDiningRouteRouteWithChildren
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/shop': typeof ShopRoute
+  '/about': typeof MainAboutRoute
+  '/privacy-policy': typeof MainPrivacyPolicyRoute
+  '/terms-condition': typeof MainTermsConditionRoute
+  '/nepali-dining/delivery': typeof NepaliDiningDeliveryRoute
+  '/nepali-dining/menu': typeof NepaliDiningMenuRoute
+  '/nepali-dining/reservation': typeof NepaliDiningReservationRoute
+  '/nepali-dining/takeout': typeof NepaliDiningTakeoutRoute
+  '/': typeof MainIndexRoute
+  '/nepali-dining/': typeof NepaliDiningIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/shop': typeof ShopRoute
+  '/about': typeof MainAboutRoute
+  '/privacy-policy': typeof MainPrivacyPolicyRoute
+  '/terms-condition': typeof MainTermsConditionRoute
+  '/nepali-dining/delivery': typeof NepaliDiningDeliveryRoute
+  '/nepali-dining/menu': typeof NepaliDiningMenuRoute
+  '/nepali-dining/reservation': typeof NepaliDiningReservationRoute
+  '/nepali-dining/takeout': typeof NepaliDiningTakeoutRoute
+  '/': typeof MainIndexRoute
+  '/nepali-dining': typeof NepaliDiningIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/nepali-dining': typeof NepaliDiningRouteRouteWithChildren
+  '/_main': typeof MainRouteWithChildren
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/shop': typeof ShopRoute
+  '/_main/about': typeof MainAboutRoute
+  '/_main/privacy-policy': typeof MainPrivacyPolicyRoute
+  '/_main/terms-condition': typeof MainTermsConditionRoute
+  '/nepali-dining/delivery': typeof NepaliDiningDeliveryRoute
+  '/nepali-dining/menu': typeof NepaliDiningMenuRoute
+  '/nepali-dining/reservation': typeof NepaliDiningReservationRoute
+  '/nepali-dining/takeout': typeof NepaliDiningTakeoutRoute
+  '/_main/': typeof MainIndexRoute
+  '/nepali-dining/': typeof NepaliDiningIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/profile' | '/search'
+  fullPaths:
+    | '/nepali-dining'
+    | '/profile'
+    | '/search'
+    | '/shop'
+    | '/about'
+    | '/privacy-policy'
+    | '/terms-condition'
+    | '/nepali-dining/delivery'
+    | '/nepali-dining/menu'
+    | '/nepali-dining/reservation'
+    | '/nepali-dining/takeout'
+    | '/'
+    | '/nepali-dining/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/profile' | '/search'
-  id: '__root__' | '/' | '/profile' | '/search'
+  to:
+    | '/profile'
+    | '/search'
+    | '/shop'
+    | '/about'
+    | '/privacy-policy'
+    | '/terms-condition'
+    | '/nepali-dining/delivery'
+    | '/nepali-dining/menu'
+    | '/nepali-dining/reservation'
+    | '/nepali-dining/takeout'
+    | '/'
+    | '/nepali-dining'
+  id:
+    | '__root__'
+    | '/nepali-dining'
+    | '/_main'
+    | '/profile'
+    | '/search'
+    | '/shop'
+    | '/_main/about'
+    | '/_main/privacy-policy'
+    | '/_main/terms-condition'
+    | '/nepali-dining/delivery'
+    | '/nepali-dining/menu'
+    | '/nepali-dining/reservation'
+    | '/nepali-dining/takeout'
+    | '/_main/'
+    | '/nepali-dining/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  NepaliDiningRouteRoute: typeof NepaliDiningRouteRouteWithChildren
+  MainRoute: typeof MainRouteWithChildren
   ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
+  ShopRoute: typeof ShopRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -75,20 +219,127 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_main': {
+      id: '/_main'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof MainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nepali-dining': {
+      id: '/nepali-dining'
+      path: '/nepali-dining'
+      fullPath: '/nepali-dining'
+      preLoaderRoute: typeof NepaliDiningRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nepali-dining/': {
+      id: '/nepali-dining/'
+      path: '/'
+      fullPath: '/nepali-dining/'
+      preLoaderRoute: typeof NepaliDiningIndexRouteImport
+      parentRoute: typeof NepaliDiningRouteRoute
+    }
+    '/_main/': {
+      id: '/_main/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof MainIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/nepali-dining/takeout': {
+      id: '/nepali-dining/takeout'
+      path: '/takeout'
+      fullPath: '/nepali-dining/takeout'
+      preLoaderRoute: typeof NepaliDiningTakeoutRouteImport
+      parentRoute: typeof NepaliDiningRouteRoute
+    }
+    '/nepali-dining/reservation': {
+      id: '/nepali-dining/reservation'
+      path: '/reservation'
+      fullPath: '/nepali-dining/reservation'
+      preLoaderRoute: typeof NepaliDiningReservationRouteImport
+      parentRoute: typeof NepaliDiningRouteRoute
+    }
+    '/nepali-dining/menu': {
+      id: '/nepali-dining/menu'
+      path: '/menu'
+      fullPath: '/nepali-dining/menu'
+      preLoaderRoute: typeof NepaliDiningMenuRouteImport
+      parentRoute: typeof NepaliDiningRouteRoute
+    }
+    '/nepali-dining/delivery': {
+      id: '/nepali-dining/delivery'
+      path: '/delivery'
+      fullPath: '/nepali-dining/delivery'
+      preLoaderRoute: typeof NepaliDiningDeliveryRouteImport
+      parentRoute: typeof NepaliDiningRouteRoute
+    }
+    '/_main/terms-condition': {
+      id: '/_main/terms-condition'
+      path: '/terms-condition'
+      fullPath: '/terms-condition'
+      preLoaderRoute: typeof MainTermsConditionRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/privacy-policy': {
+      id: '/_main/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof MainPrivacyPolicyRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/about': {
+      id: '/_main/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof MainAboutRouteImport
+      parentRoute: typeof MainRoute
     }
   }
 }
 
+interface NepaliDiningRouteRouteChildren {
+  NepaliDiningDeliveryRoute: typeof NepaliDiningDeliveryRoute
+  NepaliDiningMenuRoute: typeof NepaliDiningMenuRoute
+  NepaliDiningReservationRoute: typeof NepaliDiningReservationRoute
+  NepaliDiningTakeoutRoute: typeof NepaliDiningTakeoutRoute
+  NepaliDiningIndexRoute: typeof NepaliDiningIndexRoute
+}
+
+const NepaliDiningRouteRouteChildren: NepaliDiningRouteRouteChildren = {
+  NepaliDiningDeliveryRoute: NepaliDiningDeliveryRoute,
+  NepaliDiningMenuRoute: NepaliDiningMenuRoute,
+  NepaliDiningReservationRoute: NepaliDiningReservationRoute,
+  NepaliDiningTakeoutRoute: NepaliDiningTakeoutRoute,
+  NepaliDiningIndexRoute: NepaliDiningIndexRoute,
+}
+
+const NepaliDiningRouteRouteWithChildren =
+  NepaliDiningRouteRoute._addFileChildren(NepaliDiningRouteRouteChildren)
+
+interface MainRouteChildren {
+  MainAboutRoute: typeof MainAboutRoute
+  MainPrivacyPolicyRoute: typeof MainPrivacyPolicyRoute
+  MainTermsConditionRoute: typeof MainTermsConditionRoute
+  MainIndexRoute: typeof MainIndexRoute
+}
+
+const MainRouteChildren: MainRouteChildren = {
+  MainAboutRoute: MainAboutRoute,
+  MainPrivacyPolicyRoute: MainPrivacyPolicyRoute,
+  MainTermsConditionRoute: MainTermsConditionRoute,
+  MainIndexRoute: MainIndexRoute,
+}
+
+const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  NepaliDiningRouteRoute: NepaliDiningRouteRouteWithChildren,
+  MainRoute: MainRouteWithChildren,
   ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
+  ShopRoute: ShopRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
