@@ -1,5 +1,7 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { buttonVariants } from "@/components/ui/button";
 import { Image } from "@/components/ui/image";
+import { cn } from "@/lib/utils";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/nepali-dining/")({
@@ -12,7 +14,7 @@ function RouteComponent() {
       <AspectRatio ratio={16 / 9}>
         <Image
           src={
-            "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566868990918-JPJBFE44OW13OFILDIOM/yangskitchen_home.jpg?format=2500w"
+            "https://tblg.k-img.com/restaurant/images/Rvw/280910/320x320_rect_30d97d96aa3c94630ac000b0f560363e.jpg"
           }
           alt="restarurant-banner"
         />
@@ -64,6 +66,17 @@ function RouteComponent() {
           <p className="font-dosis font-medium">
             Dine-in, takeout, and delivery (via DoorDash & UberEats) available
           </p>
+          <Link
+            to="/nepali-dining/delivery"
+            className={cn(
+              buttonVariants({
+                variant: "outline",
+              }),
+              "rounded-none border-black border-2 hover:bg-black hover:text-white min-h-16 px-16 font-times font-semibold"
+            )}
+          >
+            ORDER ONLINE
+          </Link>
         </section>
       </div>
     </div>
