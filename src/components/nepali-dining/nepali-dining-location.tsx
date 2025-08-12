@@ -3,7 +3,7 @@ import { AspectRatio } from "../ui/aspect-ratio";
 export const NepaliDiningLocation = () => {
   return (
     <div className="space-y-8 pt-20">
-      <div className="grid grid-cols-2 items-start ">
+      <div className="grid xs:grid-cols-2 grid-cols-1 items-start ">
         <section className="space-y-3">
           <h6 className="font-times text-xl font-medium">LOCATION</h6>
           <div className="text-muted-foreground font-dosis">
@@ -38,7 +38,7 @@ export const NepaliDiningLocation = () => {
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3233.481285263806!2d139.63296101207004!3d35.861720772414934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c1defe7bbe15%3A0x2bc6da428c2c9ea6!2sSasto%20Sulav%20Express!5e0!3m2!1sen!2snp!4v1754384122546!5m2!1sen!2snp"
           allowFullScreen
-          className="w-full h-[450px] border-0"
+          className="w-full h-full ] border-0"
           style={{
             border: 0,
           }}

@@ -94,8 +94,8 @@ function RouteComponent() {
           </Link>
         </section>
       </div>
-      <div className="pt-36 grid grid-cols-3 items-start text-center">
-        <section className="space-y-6">
+      <div className="pt-36 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:items-start items-center md:gap-y-0 gap-y-10 text-center">
+        <section className="md:space-y-6 space-y-3">
           <h3 className="font-times font-medium text-xl tracking-[0.5rem]">
             LOCATION
           </h3>
@@ -104,7 +104,7 @@ function RouteComponent() {
             <p>Alhambra, CA 91801</p>
           </div>
         </section>
-        <section className="space-y-6">
+        <section className="md:space-y-6 space-y-3">
           <h3 className="font-times font-medium text-xl tracking-[0.5rem]">
             HOURS
           </h3>
@@ -116,7 +116,7 @@ function RouteComponent() {
             <p>Closed Tuesdays & Wednesdays</p>
           </div>
         </section>
-        <section className="space-y-6">
+        <section className="md:space-y-6 space-y-3">
           <h3 className="font-times font-medium text-xl tracking-[0.5rem]">
             CONTACT
           </h3>
@@ -130,7 +130,7 @@ function RouteComponent() {
           </div>
         </section>
       </div>
-      <div className="grid grid-cols-2 gap-28 pt-20 pb-32">
+      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-28 pt-20 pb-32 sm:gap-y-0 gap-y-10">
         <section className="flex flex-col gap-y-3">
           <AspectRatio ratio={4 / 3}>
             <Image
@@ -149,7 +149,7 @@ function RouteComponent() {
               Nepali Cuisine
             </a>
           </p>
-          <div className="flex flex-1 w-full items-center justify-center">
+          <div className="sm:flex hidden flex-1 w-full items-center justify-center">
             <Image
               src="/logo_transparent.png"
               className="size-32 object-contain"
@@ -164,6 +164,11 @@ function RouteComponent() {
               src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566964014153-2JAH31CL236V51TSY4SW/yangskitchen_02.png?format=750w"
             />
           </AspectRatio>
+          <Image
+            src="/logo_transparent.png"
+            className="size-32 object-contain sm:hidden block mx-auto"
+            alt="logo"
+          />
           <p className="font-dosis text-muted-foreground">
             Nepali Dining strives to source local, sustainable and organic when
             possible. We work hard to source premium ingredients and we cook

@@ -4,7 +4,7 @@ import { Instagram } from "lucide-react";
 export const NepaliDiningFooter = () => {
   return (
     <footer className="flex flex-col items-center gap-y-8">
-      <div className="flex items-center gap-6">
+      <div className="flex sm:flex-nowrap flex-wrap items-center gap-6">
         <Link to="/nepali-dining">Nepali Dining</Link>{" "}
         <p>112 West Main Street, Alhambra, CA, 91801, United States</p>{" "}
         <a href="tel: 6262811035"> 6262811035</a>{" "}

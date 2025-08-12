@@ -44,7 +44,7 @@ export function PressMediaSection() {
   };
 
   return (
-    <section className="">
+    <section className="pt-36">
       <div className="mb-12">
         <h2 className="text-lg font-times font-medium tracking-[0.2em]  mb-8">
           AS SEEN IN...
@@ -73,7 +73,7 @@ export function PressMediaSection() {
         ))}
       </div>
 
-      <div className="flex md:max-w-4xl mx-auto gap-32">
+      <div className="xs:flex xs:space-y-0 space-y-6 md:max-w-4xl mx-auto xs:gap-32">
         <h3 className="text-xl font-times uppercase tracking-[0.5em]">
           social <br /> media
         </h3>
