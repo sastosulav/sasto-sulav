@@ -1,11 +1,21 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Image } from "@/components/ui/image";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { seo } from "@/utils/seo";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/nepali-dining/menu")({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      ...seo({
+        title: "Nepali Dining | Menu",
+      }),
+    ],
+  }),
 });
 
 const menuData = {
@@ -22,6 +32,7 @@ const menuData = {
             details:
               "Jidori chicken liver mousse, grilled Bub & Grandma's sourdough sesame toast, house jam, Chavez Farms market pickles, seasonal herbs",
             dietary: [],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Smoked Fish Dip",
@@ -30,6 +41,7 @@ const menuData = {
             details:
               "Smoked fish-of-the-moment dip, Bub & Grandma's sesame sourdough toast, herbs (contains dairy and shallots)",
             dietary: [],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Yang's Fried Chicken Wings",
@@ -39,6 +51,7 @@ const menuData = {
             details:
               "Mary's Heirloom chicken wings, lemon, house salt & pepper",
             dietary: ["gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -54,6 +67,7 @@ const menuData = {
               "Semolina organic spaghetti, house sesame sauce, organic Persian cucumbers, pickled carrots, crushed peanuts, cilantro, scallion, house chili crisp *contains nuts*",
             dietary: ["ve", "s"],
             addOn: "+ Pastured chicken breast / avocado (+¥6)",
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Cornmeal Mochi Pancake",
@@ -62,6 +76,7 @@ const menuData = {
             details:
               "Grist & Toll cornmeal, Koda Farms mochiko rice flour, organic whipped cream, seasonal toppings",
             dietary: ["gf", "v"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -79,6 +94,7 @@ const menuData = {
             details:
               "6 pieces, daily selection from Pacific Northwest, house mignonette, lemon, cocktail sauce",
             dietary: ["gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Burrata & Stone Fruit",
@@ -87,6 +103,7 @@ const menuData = {
             details:
               "House-made burrata, seasonal stone fruit, arugula, basil oil, aged balsamic, grilled sourdough",
             dietary: ["v"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Tuna Crudo",
@@ -95,6 +112,7 @@ const menuData = {
             details:
               "Sashimi-grade tuna, yuzu kosho, avocado, cucumber, radish, sesame oil, micro shiso",
             dietary: ["gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -108,6 +126,7 @@ const menuData = {
             details:
               "Wild king salmon, roasted vegetables, fingerling potatoes, herb compound butter, lemon",
             dietary: ["gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Dry-Aged Ribeye",
@@ -116,6 +135,7 @@ const menuData = {
             details:
               "16oz dry-aged ribeye, bone marrow butter, roasted mushrooms, crispy potatoes, watercress",
             dietary: ["gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Mushroom Risotto",
@@ -125,6 +145,7 @@ const menuData = {
             details:
               "Arborio rice, wild mushroom medley, parmesan, truffle oil, fresh herbs, white wine",
             dietary: ["v", "gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -142,6 +163,7 @@ const menuData = {
             details:
               "Single origin beans from Guatemala, medium roast, served in traditional cup",
             dietary: ["ve", "gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Matcha Latte",
@@ -150,6 +172,7 @@ const menuData = {
             details:
               "Ceremonial grade matcha powder, choice of oat, almond, or dairy milk, light sweetener",
             dietary: ["v", "gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Cold Brew",
@@ -158,6 +181,7 @@ const menuData = {
             details:
               "24-hour cold brew, Ethiopian beans, served black or with cream",
             dietary: ["ve", "gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -170,6 +194,7 @@ const menuData = {
             description: "Kale, spinach, apple, cucumber, lemon, ginger",
             details: "Fresh pressed daily, organic vegetables, no added sugar",
             dietary: ["ve", "gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Citrus Sunrise",
@@ -178,6 +203,7 @@ const menuData = {
             details:
               "Fresh squeezed citrus fruits, organic mint, served over ice",
             dietary: ["ve", "gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -195,6 +221,7 @@ const menuData = {
             details:
               "Bulleit bourbon, house-made bitters, demerara sugar, expressed orange peel, luxardo cherry",
             dietary: [],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Yuzu Margarita",
@@ -203,6 +230,7 @@ const menuData = {
             details:
               "Blanco tequila, fresh yuzu juice, lime, agave nectar, himalayan salt rim",
             dietary: ["gf"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Smoky Mezcal Negroni",
@@ -211,6 +239,7 @@ const menuData = {
             details:
               "Artisanal mezcal, Campari, Carpano Antica, expressed orange oils, smoked glass",
             dietary: [],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -223,6 +252,7 @@ const menuData = {
             description: "Classic French champagne, crisp and elegant",
             details: "Brut, Reims France, notes of apple and brioche",
             dietary: ["gf", "v"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Pinot Noir - Willamette Valley",
@@ -231,6 +261,7 @@ const menuData = {
             details:
               "2021 vintage, Oregon, light body, cherry, mushroom, spice",
             dietary: ["gf", "ve"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Sauvignon Blanc - Sancerre",
@@ -239,6 +270,7 @@ const menuData = {
             details:
               "Loire Valley, France, gooseberry, lime zest, wet stone minerality",
             dietary: ["gf", "ve"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -251,6 +283,7 @@ const menuData = {
             description: "Hoppy IPA from local brewery",
             details: "7.2% ABV, citrus hops, pine notes, medium body",
             dietary: ["ve"],
+            image: "/placeholder.svg?height=200&width=300",
           },
           {
             name: "Japanese Lager",
@@ -258,6 +291,7 @@ const menuData = {
             description: "Crisp and clean Japanese-style lager",
             details: "5.0% ABV, light and refreshing, perfect with sushi",
             dietary: ["ve"],
+            image: "/placeholder.svg?height=200&width=300",
           },
         ],
       },
@@ -283,16 +317,21 @@ function RouteComponent() {
 
   return (
     <div className="max-w-6xl mx-auto pt-20">
-      <Tabs defaultValue="BRUNCH" className="w-full">
-        <div className="flex justify-center mb-8">
-          <TabsList className="grid w-full max-w-4xl grid-cols-4">
+      <Tabs defaultValue="BRUNCH" className="w-full" variant="underline">
+        <ScrollArea>
+          <ScrollBar orientation="horizontal" />
+          <TabsList className="grid w-full max-w-4xl mx-auto sm:gap-x-0 gap-x-6 grid-cols-4 mb-8">
             {tabs.map((tab) => (
-              <TabsTrigger key={tab} value={tab} className="text-xs">
+              <TabsTrigger
+                key={tab}
+                value={tab}
+                className="text-xs whitespace-nowrap block"
+              >
                 {tab}
               </TabsTrigger>
             ))}
           </TabsList>
-        </div>
+        </ScrollArea>
 
         <div className="mb-8 p-4 bg-gray-50 rounded-lg">
           <h3 className="text-sm font-semibold mb-2">Dietary Information:</h3>
@@ -309,27 +348,30 @@ function RouteComponent() {
           <TabsContent key={tab} value={tab} className="space-y-12">
             {menuData[tab].sections.map((section, sectionIndex) => (
               <section key={sectionIndex}>
-                <h2 className="text-2xl font-bold text-center mb-8 font-dosis text-accent-foreground">
+                <h2 className="text-2xl font-bold text-center mb-8 text-accent-foreground">
                   {section.title}
                 </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid xs:grid-cols-2 lg:grid-cols-3 gap-6">
                   {section.items.map((item, itemIndex) => (
-                    <Card
-                      key={itemIndex}
-                      className="hover:shadow-md transition-shadow"
-                    >
+                    <Card key={itemIndex} className="p-0 overflow-hidden group">
+                      <div className="aspect-video w-full overflow-hidden bg-gray-100">
+                        <Image
+                          src="/logo.png"
+                          alt={item.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
                       <CardContent className="p-6">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="font-bold text-lg leading-tight">
                             {item.name}
                           </h3>
-                          <span className="font-bold text-lg text-green-700 ml-2">
+                          <span className="font-bold text-lg text-green-700 ml-2 flex-shrink-0">
                             {item.price}
                           </span>
                         </div>
-
                         {item.dietary.length > 0 && (
-                          <div className="flex gap-1 mb-3">
+                          <div className="flex gap-1 mb-3 flex-wrap">
                             {item.dietary.map((diet) => (
                               <Badge
                                 key={diet}
@@ -340,7 +382,6 @@ function RouteComponent() {
                             ))}
                           </div>
                         )}
-
                         <p className="text-accent-foreground font-medium mb-3">
                           {item.description}
                         </p>

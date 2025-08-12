@@ -1,10 +1,20 @@
 import { Container } from "@/components/ui/container";
 import { Image } from "@/components/ui/image";
+import { seo } from "@/utils/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 export const Route = createFileRoute("/_main/about")({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      ...seo({
+        title: "About Us",
+        description:
+          "Learn more about Sasto Sulav Express, our mission, and our team.",
+      }),
+    ],
+  }),
 });
 
 function RouteComponent() {

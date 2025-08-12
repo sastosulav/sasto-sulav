@@ -19,6 +19,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin;
   orientation?: "horizontal" | "vertical";
   setApi?: (api: CarouselApi) => void;
+  onEndReach?: () => void;
 };
 
 type CarouselContextProps = {
@@ -49,9 +50,14 @@ function Carousel({
   plugins,
   className,
   children,
+  onEndReach,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
   const [isMounted, setIsMounted] = React.useState(false);
+
+  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
+  const [canScrollNext, setCanScrollNext] = React.useState(false);
+  const [hasCalledEndReach, setHasCalledEndReach] = React.useState(false);
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -59,18 +65,36 @@ function Carousel({
     },
     plugins
   );
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-  const [canScrollNext, setCanScrollNext] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const onSelect = React.useCallback((api: CarouselApi) => {
-    if (!api) return;
-    setCanScrollPrev(api.canScrollPrev());
-    setCanScrollNext(api.canScrollNext());
-  }, []);
+  const onSelect = React.useCallback(
+    (api: CarouselApi) => {
+      if (!api) return;
+
+      const totalSlides = api.scrollSnapList().length;
+      const currentSlide = api.selectedScrollSnap();
+      const threshold = 3;
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
+
+      if (
+        currentSlide >= totalSlides - threshold &&
+        !hasCalledEndReach &&
+        onEndReach
+      ) {
+        onEndReach();
+        setHasCalledEndReach(true);
+      }
+
+      if (currentSlide < totalSlides - threshold && hasCalledEndReach) {
+        setHasCalledEndReach(false);
+      }
+    },
+    [onEndReach, hasCalledEndReach]
+  );
 
   const scrollPrev = React.useCallback(() => {
     api?.scrollPrev();
@@ -190,6 +214,7 @@ function CarouselPrevious({
     <Button
       data-slot="carousel-previous"
       variant={variant}
+      type="button"
       size={size}
       className={cn(
         "absolute size-8 rounded-full",
@@ -220,6 +245,7 @@ function CarouselNext({
     <Button
       data-slot="carousel-next"
       variant={variant}
+      type="button"
       size={size}
       className={cn(
         "absolute size-8 rounded-full",
