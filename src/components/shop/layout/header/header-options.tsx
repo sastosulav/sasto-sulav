@@ -1,5 +1,6 @@
 import { Image } from "@/components/ui/image";
 import { CATEGORIES } from "@/constants/data";
+import { CAN_USE_DOM } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { Menu, Search, ShoppingBag, UserRound } from "lucide-react";
 import { AutoComplete } from "../../../ui/auto-complete";
@@ -57,6 +58,11 @@ export const HeaderOptions = () => {
             }))}
             loadingText="Searching..."
             placeholder="Search for products..."
+            onSelect={(c) => {
+              if (CAN_USE_DOM) {
+                window.open(c, "_blank", "noopener noreferrer");
+              }
+            }}
           />
           <button>
             <Search className="text-muted-foreground size-8" />

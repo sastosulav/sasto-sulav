@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary";
+import { NavigationProgress } from "@/components/navigation-progress";
 import { NotFound } from "@/components/NotFound";
 import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/providers";
@@ -70,7 +71,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             path: "/",
           }}
         >
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            <NavigationProgress />
+            {children}
+          </LanguageProvider>
         </CookiesProvider>
         <Toaster position="top-center" />
         {/* {process.env.NODE_ENV === "development" && (
