@@ -5,7 +5,7 @@ import { Image } from "../ui/image";
 
 export const HomeMobileBanner = () => {
   return (
-    <div className="md:hidden flex flex-col justify-between min-h-screen bg-cover bg-center bg-no-repeat bg-[url(/home_mobile_bg.png)]">
+    <div className="md:hidden flex flex-col justify-between min-h-[100dvh] bg-cover bg-center bg-no-repeat bg-[url(/home_mobile_bg.png)]">
       <div className="flex items-center justify-between p-5">
         <h1 className="text-5xl font-bold font-dosis leading-[60px] text-accent/80">
           Sasto Sualav <br />

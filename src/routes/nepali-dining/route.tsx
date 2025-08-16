@@ -1,5 +1,10 @@
 import { NepaliDiningSidebar } from "@/components/nepali-dining/nepali-dining-sidebar";
 import { Container } from "@/components/ui/container";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { seo } from "@/utils/seo";
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 
@@ -21,12 +26,27 @@ function RouteComponent() {
     <Container className="py-10">
       <div className="grid grid-cols-3 justify-between items-center">
         <div />
-        <Link
-          to="/nepali-dining"
-          className="font-atma text-4xl font-medium text-center text-nowrap"
-        >
-          Nepali Dining
-        </Link>
+        <div className="flex flex-col items-center gap-y-1">
+          <Link
+            to="/nepali-dining"
+            className="font-atma text-4xl font-medium text-center text-nowrap block"
+          >
+            Nepali Dining
+          </Link>
+          <Tooltip>
+            <TooltipTrigger className="text-center justify-center">
+              <Link
+                to="/"
+                className="block text-center text-sm underline font-dosis text-gray-700"
+              >
+                Home
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>go to main page</p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
         <section className="font-dosis md:flex hidden font-medium uppercase  flex-col ml-auto text-gray-600">
           <Link
             to="/nepali-dining/menu"

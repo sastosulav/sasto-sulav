@@ -14,12 +14,17 @@ import { ShopFooter } from "@/components/shop/layout/shop-footer";
 import { ShopOffersBanner } from "@/components/shop/shop-offers-banner";
 import { Container } from "@/components/ui/container";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   ALCOHOL_CATEGORIES,
   ALCOHOL_CATEGORY_ITEMS,
   FRUITS_CATEGORIES,
   FRUITS_CATEGORY_ITEMS,
 } from "@/constants/data";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/shop")({
   component: RouteComponent,
@@ -28,6 +33,23 @@ export const Route = createFileRoute("/shop")({
 function RouteComponent() {
   return (
     <div>
+      <Tooltip>
+        <TooltipTrigger className="fixed top-1/2 -translate-y-1/2 right-0 bg-tertiary-foreground">
+          <Link
+            className="sm:px-3 px-2 py-1 z-50 sm:text-base text-sm font-dosis"
+            to="/"
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "upright",
+            }}
+          >
+            Home
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>go to main page</p>
+        </TooltipContent>
+      </Tooltip>
       <ShopHeader />
       <Container className="pt-8 pb-16 space-y-8">
         <ShopOffersBanner />

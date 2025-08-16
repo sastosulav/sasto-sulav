@@ -4,10 +4,10 @@ import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { SheetFooter } from "../ui/sheet";
 
-export const MobileSideBarFooter = () => {
+export const MobileSideBarFooter = ({ className }: { className?: string }) => {
   const { setLanguage, language } = useLanguage();
   return (
-    <SheetFooter>
+    <SheetFooter className={className}>
       <small className="text-xs text-gray-400 pb-6 pt-12 block px-6">
         Copyright 2025 © Sasto Sulav Express. All rights reserved.
       </small>

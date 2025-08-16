@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { Container } from "../ui/container";
+import { Image } from "../ui/image";
 import { LanguageSelector } from "./language-selector";
 import { MobileSideBar } from "./mobile-sidebar";
 
@@ -21,11 +22,12 @@ export const Header = () => {
         >
           <Link
             to="/"
-            className="text-2xl font-bold relative"
+            className="text-2xl font-bold flex items-center gap-1"
             data-i18n="sasto-sulav-express"
           >
-            <div className="w-10 h-12 bg-tertiary absolute top-1/2 -translate-y-1/2 -left-4 rounded-l-full" />
-            <h1 className="relative z-50">Sasto Sulav Express</h1>
+            <Image src="/logo.png" alt="logo" className="size-8 rounded-lg" />
+            {/* <div className="w-10 h-12 bg-tertiary absolute top-1/2 -translate-y-1/2 -left-4 rounded-l-full" /> */}
+            <h1 className="relative z-50">Sasto Sulav</h1>
           </Link>
           <ul className="md:flex items-center font-medium text-sm hidden gap-x-1">
             <li>
